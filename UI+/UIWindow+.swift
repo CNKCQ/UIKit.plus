@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIWindow {
+public extension UIWindow {
 
     /// See: http://stackoverflow.com/questions/24825123/get-the-current-view-controller-from-the-app-delegate
     static var visibleViewController: UIViewController {

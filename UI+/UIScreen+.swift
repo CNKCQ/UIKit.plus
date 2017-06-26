@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIScreen {
+public extension UIScreen {
 
     /// Returns screen's width
     static var width: CGFloat {

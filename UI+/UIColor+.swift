@@ -61,7 +61,7 @@ public extension UIColor {
     /// - Parameters:
     ///   - hex: The hex
     ///   - alpha: The alpha
-    public convenience init(_ hex: Int, alpha: CGFloat = 1) {
+    convenience init(_ hex: Int, alpha: CGFloat = 1) {
         self.init(
             red: CGFloat((hex & 0xFF0000) >> 16) / 255,
             green: CGFloat((hex & 0xFF00) >> 8) / 255,
@@ -75,7 +75,7 @@ public extension UIColor {
     /// - Parameters:
     ///   - hex: The hex
     ///   - alpha: The alpha
-    public convenience init?(hexString: String, alpha: CGFloat = 1) {
+    convenience init?(hexString: String, alpha: CGFloat = 1) {
         let intString = hexString.replacingOccurrences(of: "#", with: "")
         guard let hex = Int(intString, radix: 16) else {
             return nil

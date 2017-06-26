@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIScrollView {
+public extension UIScrollView {
 
     /// `set` `get` the content's height
     var contentHeight: CGFloat {

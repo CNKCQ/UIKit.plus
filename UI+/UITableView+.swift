@@ -8,30 +8,30 @@
 
 import UIKit
 
-extension UITableView {
+public extension UITableView {
 
     ///  Deselects rows. This method will not call the delegate methods (-tableView:didSelectRowAtIndexPath:), nor will it send out a notification.
     ///
     /// - Parameter animated: Animation
-    public func deselectAll(animated: Bool) {
+    func deselectAll(animated: Bool) {
         _ = indexPathsForSelectedRows?.map {
             deselectRow(at: $0, animated: animated)
         }
     }
 
     /// Hide the bottom line of the tableView
-    public func hideTailLine() {
+    func hideTailLine() {
         tableFooterView = UIView()
     }
 
     /// http://blog.sunnyxx.com/2015/04/15/ios-hide-grouped-tableview-header/
     /// Remove the gap of TableView's header
-    public func removeGroupGap() {
+    func removeGroupGap() {
         tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
     }
 
     /// Returns the items of the tableView
-    public var numberOfItems: Int {
+    var numberOfItems: Int {
         return (0 ..< numberOfSections).reduce(0) {
             $0 + numberOfRows(inSection: $1)
         }

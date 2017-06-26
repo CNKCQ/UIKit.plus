@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension UIImageView {
+public extension UIImageView {
 
     /// ImageView are created with an iamge witch is instance by a `String`
-    public convenience init?(imageNamed: String) {
+    convenience init?(imageNamed: String) {
         self.init(image: UIImage(named: imageNamed))
     }
 

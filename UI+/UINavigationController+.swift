@@ -19,7 +19,7 @@ public protocol BackBarButtonItemDelegate: class {
 
 extension UINavigationController: UINavigationBarDelegate {
 
-    public func navigationBar(_ navigationBar: UINavigationBar, shouldPop _: UINavigationItem) -> Bool {
+     public func navigationBar(_ navigationBar: UINavigationBar, shouldPop _: UINavigationItem) -> Bool {
         if viewControllers.count < navigationBar.items?.count ?? 2 {
             return true
         }

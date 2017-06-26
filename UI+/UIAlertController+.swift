@@ -15,7 +15,7 @@ import UIKit
 ///   - message: message content
 ///   - cancelAction: cancel callback
 ///   - okAction: okcallback
-func alert(
+public func alert(
     title: String,
     message: String,
     cancelAction: ((UIAlertAction?) -> Void)? = nil,
@@ -36,7 +36,7 @@ func alert(
 ///   - title: message title
 ///   - message: message content
 ///   - actions: The set of the actions
-func actionSheet(
+public func actionSheet(
     title: String,
     message: String,
     actions: [UIAlertAction]) {
