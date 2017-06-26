@@ -10,7 +10,7 @@ import UIKit
 
 
 // MARK: - convenience initializer declaration
-extension UIFont {
+public extension UIFont {
 
     convenience init?(_ size: CGFloat) {
         self.init(name: "HelveticaNeue", size: size)
@@ -18,21 +18,21 @@ extension UIFont {
 }
 
 // MARK: -  System fonts
-extension UIFont {
+public extension UIFont {
 
-    public class var labelFont: UIFont {
+    class var labelFont: UIFont {
         return systemFont(ofSize: labelFontSize)
     }
 
-    public class var buttonFont: UIFont {
+    class var buttonFont: UIFont {
         return systemFont(ofSize: buttonFontSize)
     }
 
-    public class var smallSystemFont: UIFont {
+    class var smallSystemFont: UIFont {
         return systemFont(ofSize: smallSystemFontSize)
     }
 
-    public class var systemFont: UIFont {
+    class var systemFont: UIFont {
         return systemFont(ofSize: systemFontSize)
     }
 }
@@ -40,13 +40,13 @@ extension UIFont {
 extension UIFont {
 
     /// Returns a bolded version of `self`.
-    public var bolded: UIFont {
+    var bolded: UIFont {
         return fontDescriptor.withSymbolicTraits(.traitBold)
             .map { UIFont(descriptor: $0, size: 0.0) } ?? self
     }
 
     /// Returns a italicized version of `self`.
-    public var italicized: UIFont {
+    var italicized: UIFont {
         return fontDescriptor.withSymbolicTraits(.traitItalic)
             .map { UIFont(descriptor: $0, size: 0.0) } ?? self
     }

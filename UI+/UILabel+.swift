@@ -8,5 +8,5 @@
 
 import UIKit
 
-extension UILabel {
+public extension UILabel {
 }

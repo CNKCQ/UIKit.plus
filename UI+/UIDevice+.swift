@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIDevice {
+public extension UIDevice {
 
     /// Returns identifierForVendor's uuid
     static var idForVendor: String? {

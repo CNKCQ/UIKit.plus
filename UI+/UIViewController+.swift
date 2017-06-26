@@ -8,22 +8,22 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
 
     /// Uses a horizontal slide transition. Has no effect if the view controller is already in the stack.
-    public func push(_ viewController: UIViewController, animated: Bool = true) {
+    func push(_ viewController: UIViewController, animated: Bool = true) {
         navigationController?.pushViewController(viewController, animated: animated)
     }
 
     /// Returns the popped controller.
     @discardableResult
-    public func pop(_ animated: Bool = true) -> UIViewController? {
+    func pop(_ animated: Bool = true) -> UIViewController? {
         return navigationController?.popViewController(animated: animated)
     }
 
     /// Pops view controllers until the one specified is on top. Returns the popped controllers.
     @discardableResult
-    public func pop(to viewController: UIViewController, animated: Bool = true) -> [UIViewController]? {
+    func pop(to viewController: UIViewController, animated: Bool = true) -> [UIViewController]? {
         return navigationController?.popToViewController(viewController, animated: animated)
     }
 }

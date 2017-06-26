@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension CGFloat {
+public extension CGFloat {
 
     /// The least positive normal number.
-    var min: CGFloat {
+    static var min: CGFloat {
         return CGFloat.leastNormalMagnitude
     }
 }
