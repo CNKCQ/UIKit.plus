@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIImage {
+public extension UIImage {
 
     /// Returns base64 string
     var base64: String? {

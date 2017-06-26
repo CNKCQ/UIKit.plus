@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension UICollectionView {
+public extension UICollectionView {
 
     /// Returns the items of the collectionView
-    public var numberOfItems: Int {
+    var numberOfItems: Int {
         return (0 ..< numberOfSections).reduce(0) {
             $0 + numberOfItems(inSection: $1)
         }
