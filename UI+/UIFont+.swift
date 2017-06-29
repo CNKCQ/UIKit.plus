@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 // MARK: - convenience initializer declaration
 public extension UIFont {
 
