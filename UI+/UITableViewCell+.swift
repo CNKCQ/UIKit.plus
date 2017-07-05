@@ -28,3 +28,8 @@ public extension Reusable {
         return String(describing: self)
     }
 }
+
+extension UITableViewCell: Reusable {}
+extension UICollectionViewCell: Reusable {}
+
+
