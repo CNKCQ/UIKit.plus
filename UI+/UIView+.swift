@@ -31,17 +31,6 @@ public extension UIView {
         layer.masksToBounds = true
     }
 
-    /// To add the border for `self`
-    /// - Parameters:
-    ///   - width: The layer's borderWidth
-    ///   - color: The layer's borderColor
-    func addBorder(
-        _ width: CGFloat,
-        color: UIColor) {
-        layer.borderWidth = width
-        layer.borderColor = color.cgColor
-        layer.masksToBounds = true
-    }
 }
 
 public extension UIView {
@@ -98,18 +87,16 @@ public extension UIView {
 // MARK: - Border
 public extension UIView {
 
-    /// Add a border for `self`
+    /// To add the border for `self`
+    /// - Parameters:
+    ///   - width: The layer's borderWidth
+    ///   - color: The layer's borderColor
     func addBorder(
-        _ strokeColor: UIColor = .red,
-        fillColor: UIColor = .clear,
-        width: CGFloat = 1,
-        cornerRadius: CGFloat = 5
-    ) {
-        addDashedBorder(strokeColor,
-                        fillColor: fillColor,
-                        width: width,
-                        dashPattern: nil,
-                        cornerRadius: cornerRadius)
+        _ width: CGFloat,
+        color: UIColor) {
+        layer.borderWidth = width
+        layer.borderColor = color.cgColor
+        layer.masksToBounds = true
     }
 
     /// Add dashedBorder for `self`
@@ -272,6 +259,52 @@ public extension UIView {
             var frame = self.frame
             frame.origin.x = newValue
             self.frame = frame
+        }
+    }
+}
+
+
+// MARK: - add borders for `self`
+
+public extension UIView {
+    func addBorder(for edges: [UIRectEdge], width: CGFloat = 1, color: UIColor = .black, insets: UIEdgeInsets = UIEdgeInsets(all: 0)) {
+        var edgesValues: [UIRectEdge] = edges
+        if edges.contains(.all) {
+            edgesValues = [.top, .bottom, .left, .right]
+        }
+        let allSpecificBorders:[UIRectEdge] = [.top, .bottom, .left, .right]
+        for edge in allSpecificBorders {
+            if let view = viewWithTag(Int(edge.rawValue)) {
+                view.removeFromSuperview()
+            }
+
+            if edgesValues.contains(edge) {
+                let view = UIView()
+                view.tag = Int(edge.rawValue)
+                view.backgroundColor = color
+                view.translatesAutoresizingMaskIntoConstraints = false
+                addSubview(view)
+                var horizontalVisualFormat = "H:"
+                var verticalVisualFormat = "V:"
+                switch edge {
+                case UIRectEdge.bottom:
+                    horizontalVisualFormat += "|-(\(insets.left))-[v]-(\(insets.right))-|"
+                    verticalVisualFormat += "[v(\(width))]-(\(insets.bottom))-|"
+                case UIRectEdge.top:
+                    horizontalVisualFormat += "|-(\(insets.left))-[v]-(\(insets.right))-|"
+                    verticalVisualFormat += "|-(\(insets.top))-[v(\(width))]"
+                case UIRectEdge.left:
+                    horizontalVisualFormat += "|-(\(insets.left))-[v(\(width))]"
+                    verticalVisualFormat += "|-(\(insets.top))-[v]-(\(insets.bottom))-|"
+                case UIRectEdge.right:
+                    horizontalVisualFormat += "[v(\(width))]-(\(insets.right))-|"
+                    verticalVisualFormat += "|-(\(insets.left))-[v]-(\(insets.right))-|"
+                default:
+                    break
+                }
+                self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: horizontalVisualFormat, options: .directionLeadingToTrailing, metrics: nil, views: ["v": view]))
+                self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: verticalVisualFormat, options: .directionLeadingToTrailing, metrics: nil, views: ["v": view]))
+            }
         }
     }
 }

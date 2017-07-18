@@ -15,7 +15,6 @@ public final class ObjectAssociation<T: AnyObject> {
 
     /// - Parameter policy: An association policy that will be used when linking objects.
     public init(policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
-
         self.policy = policy
     }
 
