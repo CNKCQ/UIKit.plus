@@ -49,6 +49,4 @@ public extension UIEdgeInsets {
     var leftRight: (CGFloat, CGFloat) {
         return (self.left, self.right)
     }
-
-
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UISearchBar {
+public extension UISearchBar {
 
     /// custom `self` cursor's appearance
     ///

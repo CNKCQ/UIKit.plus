@@ -8,7 +8,37 @@
 
 import UIKit
 
+
+// MARK: - convenience Initializers
 public extension UIColor {
+    
+    /// init method with hex Int and alpha(default: 1)
+    ///
+    /// - Parameters:
+    ///   - hex: The hex
+    ///   - alpha: The alpha
+    convenience init(_ hex: Int, alpha: CGFloat = 1) {
+        self.init(
+            red: CGFloat((hex & 0xFF0000) >> 16) / 255,
+            green: CGFloat((hex & 0xFF00) >> 8) / 255,
+            blue: CGFloat(hex & 0xFF) / 255,
+            alpha: alpha
+        )
+    }
+    
+    /// init method with hex string and alpha(default: 1)
+    ///
+    /// - Parameters:
+    ///   - hex: The hex
+    ///   - alpha: The alpha
+    convenience init?(hex string: String, alpha: CGFloat = 1) {
+        let intString = string.replacingOccurrences(of: "#", with: "")
+        guard let hex = Int(intString, radix: 16) else {
+            return nil
+        }
+        self.init(hex, alpha: alpha)
+    }
+
 
     /// Returns random UIColor with random alpha(default: 1.0)
     static var random: UIColor {
@@ -19,6 +49,20 @@ public extension UIColor {
             alpha: 1.0
         )
     }
+    
+    
+    /// Return rgba components of `self`
+    var components: [CGFloat] {
+        var (r, g, b, a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        return [r, g, b, a]
+    }
+}
+
+
+// MARK: - Helpers
+public extension UIColor {
+    
 }
 
 public extension UIColor {
@@ -56,30 +100,4 @@ public extension UIColor {
         return UIColor(0xFF2D55)
     }
 
-    /// init method with hex Int and alpha(default: 1)
-    ///
-    /// - Parameters:
-    ///   - hex: The hex
-    ///   - alpha: The alpha
-    convenience init(_ hex: Int, alpha: CGFloat = 1) {
-        self.init(
-            red: CGFloat((hex & 0xFF0000) >> 16) / 255,
-            green: CGFloat((hex & 0xFF00) >> 8) / 255,
-            blue: CGFloat(hex & 0xFF) / 255,
-            alpha: alpha
-        )
-    }
-
-    /// init method with hex string and alpha(default: 1)
-    ///
-    /// - Parameters:
-    ///   - hex: The hex
-    ///   - alpha: The alpha
-    convenience init?(hexString: String, alpha: CGFloat = 1) {
-        let intString = hexString.replacingOccurrences(of: "#", with: "")
-        guard let hex = Int(intString, radix: 16) else {
-            return nil
-        }
-        self.init(hex, alpha: alpha)
-    }
 }
