@@ -7,6 +7,7 @@ A collection extension for UIKit entity
 - [x] UIWindow
 - [x] UIScreen
 - [x] UIView
+- [x] CALayer 
 - [x] UIButton
 - [x] UIImage
 - [x] UIImageView
@@ -20,3 +21,5 @@ A collection extension for UIKit entity
 - [x] UIViewController
 - [x] UINavigationController
 - [x] UIAlertController
+
+
